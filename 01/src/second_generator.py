@@ -9,9 +9,9 @@ def gen(file: str or TextIOBase, words: list):
     if len(words) == 0:
         raise ValueError
     if any([type(word) != str for word in words]):
-        raise ValueError
+        raise TypeError
     if not (type(file) == str or isinstance(file, TextIOBase)):
-        raise ValueError
+        raise TypeError
 
     filename = file
     if isinstance(file, TextIOBase):
