@@ -12,13 +12,13 @@ def parse_json(json_str: str,
                keyword_callback=keyword_callback):
 
     if not isinstance(json_str, str):
-        raise TypeError("Неверное значение поля json_str")
+        raise TypeError("Wrong value for json_str")
     if not isinstance(keywords, list):
-        raise TypeError("Неверное значение поля keywords")
+        raise TypeError("Wrong value for keywords")
     if not isinstance(required_fields, list):
-        raise TypeError("Неверное значение поля required_fields")
+        raise TypeError("Wrong value for required_fields")
     if not callable(keyword_callback):
-        raise TypeError("keyword_callback не является функцией")
+        raise TypeError("keyword_callback is not a func")
 
     json_doc = json.loads(json_str)
     for field in required_fields:
