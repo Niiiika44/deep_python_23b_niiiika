@@ -5,6 +5,8 @@ from time import time
 def mean(k: int):
     if not isinstance(k, int):
         raise TypeError("k should be int")
+    if k <= 0:
+        raise ValueError("k should be greater than 0")
 
     times = deque([], k)
 
