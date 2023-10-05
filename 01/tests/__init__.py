@@ -1,1 +1,1 @@
-__all__ = ('utest_first')
+__all__ = ('test_first', 'test_second')
