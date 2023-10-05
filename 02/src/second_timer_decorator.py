@@ -22,7 +22,7 @@ def mean(k: int):
             times.append(end)
 
             print(f'The average execution time for {k}',
-                  f'recent calls is {sum(times)/len(times)} seconds.')
+                  f'recent calls is {round(sum(times)/len(times))} seconds.')
 
             return res
         return wrapper
