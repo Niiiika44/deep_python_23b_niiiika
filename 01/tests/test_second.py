@@ -37,7 +37,7 @@ class TestFirst(unittest.TestCase):
             next(g)
 
     def test_str_words(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             g = gen(self.filename, [2, 2, 8])
             while True:
                 next(g)
@@ -48,7 +48,7 @@ class TestFirst(unittest.TestCase):
             next(g)
 
     def test_filetype(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             g = gen(["it`s definitely not a file"], ["дз"])
             while True:
                 next(g)
