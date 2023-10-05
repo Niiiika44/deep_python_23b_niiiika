@@ -11,6 +11,9 @@ def mean(k: int):
     times = deque([], k)
 
     def inner(func):
+        if not callable(func):
+            raise TypeError("not a func")
+
         def wrapper(*args, **kwargs):
             start = time()
             res = func(*args, **kwargs)
