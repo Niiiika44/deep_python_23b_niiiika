@@ -13,7 +13,7 @@ def test_init_correct():
     assert c3.lst == []
 
 
-def test_init_wront_type():
+def test_init_wrong_type():
     with pytest.raises(TypeError):
         CustomList(1)
     with pytest.raises(TypeError):
