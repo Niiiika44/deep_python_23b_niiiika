@@ -4,6 +4,8 @@ class CustomList(list):
         if lst is None:
             self.lst = []
         else:
+            if not isinstance(lst, list):
+                raise TypeError("object is not a list")
             self.lst = lst
 
     def __validate_index(self, index):
