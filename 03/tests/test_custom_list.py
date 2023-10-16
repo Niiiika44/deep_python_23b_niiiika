@@ -7,40 +7,24 @@ class TestInit:
     def test_init_correct(self):
         c1 = CustomList()
         c2 = CustomList([1, 2, 3])
-        c3 = CustomList(None)
 
-        assert c1.lst == []
-        assert c2.lst == [1, 2, 3]
-        assert c3.lst == []
-
-    def test_init_wrong_type(self):
-        with pytest.raises(TypeError):
-            CustomList(1)
-        with pytest.raises(TypeError):
-            CustomList({1, 2, 3})
+        assert c1 == []
+        assert c2 == [1, 2, 3]
 
 
 class TestLen:
     def test_len(self):
         c1 = CustomList()
         c2 = CustomList([1, 2, 3])
-        c3 = CustomList(None)
 
         assert len(c1) == 0
         assert len(c2) == 3
-        assert len(c3) == 0
 
 
 class TestGetItem:
     def test_incorrect_getitem(self):
         c = CustomList([1, 2, 3])
 
-        with pytest.raises(TypeError):
-            c['a': 'b': 'c']
-        with pytest.raises(IndexError):
-            c[1: 4: 1]
-        with pytest.raises(TypeError):
-            c[1:: 3.0]
         with pytest.raises(TypeError):
             c['a']
         with pytest.raises(IndexError):
@@ -64,8 +48,8 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [2, 4, 6]
-        assert c1.lst == [1, 2, 3]
+        assert res == [2, 4, 6]
+        assert c1 == [1, 2, 3]
         assert c2 == [1, 2, 3]
 
     def test_add_list_greater(self):
@@ -74,8 +58,8 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [2, 4, 3]
-        assert c1.lst == [1, 2]
+        assert res == [2, 4, 3]
+        assert c1 == [1, 2]
         assert c2 == [1, 2, 3]
 
     def test_add_list_less(self):
@@ -84,8 +68,8 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [2, 4, 6]
-        assert c1.lst == [1, 2, 6]
+        assert res == [2, 4, 6]
+        assert c1 == [1, 2, 6]
         assert c2 == [1, 2]
 
     def test_add_customlist_equal(self):
@@ -94,9 +78,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 8]
-        assert c1.lst == [1, 2, 3]
-        assert c2.lst == [3, 4, 5]
+        assert res == [4, 6, 8]
+        assert c1 == [1, 2, 3]
+        assert c2 == [3, 4, 5]
 
     def test_add_customlist_greater(self):
         c1 = CustomList([1, 2, 3])
@@ -104,9 +88,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 3]
-        assert c1.lst == [1, 2, 3]
-        assert c2.lst == [3, 4]
+        assert res == [4, 6, 3]
+        assert c1 == [1, 2, 3]
+        assert c2 == [3, 4]
 
     def test_add_customlist_less(self):
         c1 = CustomList([1, 2])
@@ -114,9 +98,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 5, 5]
-        assert c1.lst == [1, 2]
-        assert c2.lst == [3, 4, 5, 5]
+        assert res == [4, 6, 5, 5]
+        assert c1 == [1, 2]
+        assert c2 == [3, 4, 5, 5]
 
     def test_radd_equal(self):
         c1 = [1, 2, 4]
@@ -124,9 +108,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 9]
+        assert res == [4, 6, 9]
         assert c1 == [1, 2, 4]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
     def test_radd_less(self):
         c1 = [1, 2]
@@ -134,9 +118,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 5]
+        assert res == [4, 6, 5]
         assert c1 == [1, 2]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
     def test_radd_greater(self):
         c1 = [1, 2, 5, 7]
@@ -144,9 +128,9 @@ class TestPlus:
         res = c1 + c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [4, 6, 10, 7]
+        assert res == [4, 6, 10, 7]
         assert c1 == [1, 2, 5, 7]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
 
 class TestMinus:
@@ -156,8 +140,8 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [0, 0, 0]
-        assert c1.lst == [1, 2, 3]
+        assert res == [0, 0, 0]
+        assert c1 == [1, 2, 3]
         assert c2 == [1, 2, 3]
 
     def test_sub_list_greater(self):
@@ -166,8 +150,8 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [1, 0, -3]
-        assert c1.lst == [2, 2]
+        assert res == [1, 0, -3]
+        assert c1 == [2, 2]
         assert c2 == [1, 2, 3]
 
     def test_sub_list_less(self):
@@ -176,8 +160,8 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [2, 1, 6]
-        assert c1.lst == [3, 3, 6]
+        assert res == [2, 1, 6]
+        assert c1 == [3, 3, 6]
         assert c2 == [1, 2]
 
     def test_sub_customlist_equal(self):
@@ -186,9 +170,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, -2]
-        assert c1.lst == [1, 2, 3]
-        assert c2.lst == [3, 4, 5]
+        assert res == [-2, -2, -2]
+        assert c1 == [1, 2, 3]
+        assert c2 == [3, 4, 5]
 
     def test_sub_customlist_greater(self):
         c1 = CustomList([1, 2, 3])
@@ -196,9 +180,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, 3]
-        assert c1.lst == [1, 2, 3]
-        assert c2.lst == [3, 4]
+        assert res == [-2, -2, 3]
+        assert c1 == [1, 2, 3]
+        assert c2 == [3, 4]
 
     def test_sub_customlist_less(self):
         c1 = CustomList([1, 2])
@@ -206,9 +190,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, -5, -5]
-        assert c1.lst == [1, 2]
-        assert c2.lst == [3, 4, 5, 5]
+        assert res == [-2, -2, -5, -5]
+        assert c1 == [1, 2]
+        assert c2 == [3, 4, 5, 5]
 
     def test_rsub_equal(self):
         c1 = [1, 2, 4]
@@ -216,9 +200,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, -1]
+        assert res == [-2, -2, -1]
         assert c1 == [1, 2, 4]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
     def test_rsub_less(self):
         c1 = [1, 2]
@@ -226,9 +210,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, -5]
+        assert res == [-2, -2, -5]
         assert c1 == [1, 2]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
     def test_rsub_greater(self):
         c1 = [1, 2, 5, 7]
@@ -236,9 +220,9 @@ class TestMinus:
         res = c1 - c2
 
         assert isinstance(res, CustomList)
-        assert res.lst == [-2, -2, 0, 7]
+        assert res == [-2, -2, 0, 7]
         assert c1 == [1, 2, 5, 7]
-        assert c2.lst == [3, 4, 5]
+        assert c2 == [3, 4, 5]
 
 
 class TestEqualLessGreater:
