@@ -33,7 +33,3 @@ class LRUCache:
 
     def __setitem__(self, key, value):
         return self.set(key, value)
-
-
-c = LRUCache(1)
-c.set(['l'], 2)
