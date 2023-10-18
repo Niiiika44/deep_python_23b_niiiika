@@ -1,5 +1,5 @@
 class LRUCache:
-    '''LRU (Least Recently Used) Cache w/ OrderedDict'''
+    '''LRU (Least Recently Used) Cache w/out OrderedDict'''
     def __init__(self, limit=42):
         self.dct = {}
         self.limit = limit
