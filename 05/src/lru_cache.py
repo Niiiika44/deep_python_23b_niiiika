@@ -26,6 +26,8 @@ class LRUCache:
             raise TypeError("key should be hashable")
         if key not in self._dct and len(self._dct) == self.limit:
             self._dct.pop(list(self._dct.keys())[0])
+        if key in self._dct:
+            self._dct.pop(key)
         self._dct[key] = value
 
     def __getitem__(self, key):
