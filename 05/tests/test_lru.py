@@ -73,6 +73,16 @@ class TestGet:
         assert tuple(lru_default._dct) == ("key1", "key3", "key2")
         assert lru_default._dct.popitem() == ("key2", "val_2")
 
+    def test_key_updating(self, lru_3_entry):
+        lru_3_entry.set(2, 1)
+        lru_3_entry.set(1, 1)
+        lru_3_entry.set(3, 1)
+        lru_3_entry.set(2, 3)
+        lru_3_entry.set(4, 1)
+
+        assert lru_3_entry.get(1) is None
+        assert lru_3_entry.get(2) == 3
+
 
 class TestSet:
     def test_not_hashable_key(self, lru_default):
